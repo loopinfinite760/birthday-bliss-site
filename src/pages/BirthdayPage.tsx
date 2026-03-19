@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 // Placeholder photos - replace these with real photos of her!
 const PHOTOS = [
@@ -72,10 +73,32 @@ const Confetti = () => (
 );
 
 const BirthdayPage = () => {
-  // Replace this with her actual photo
   const mainPhoto = "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=400&h=400&fit=crop";
+  const audioRef = useRef<HTMLAudioElement>(null);
+
+  useEffect(() => {
+    // Auto-play music when page loads
+    const audio = audioRef.current;
+    if (audio) {
+      audio.volume = 0.4;
+      audio.play().catch(() => {
+        // Autoplay blocked — play on first user interaction
+        const playOnClick = () => {
+          audio.play();
+          document.removeEventListener("click", playOnClick);
+        };
+        document.addEventListener("click", playOnClick);
+      });
+    }
+  }, []);
 
   return (
+    <>
+      <audio
+        ref={audioRef}
+        src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+        loop
+      />
     <div className="h-screen bg-background relative overflow-hidden">
       {/* Background: 3 equal rows of scrolling photos */}
       <div className="absolute inset-0 flex flex-col">
@@ -127,6 +150,7 @@ const BirthdayPage = () => {
         </motion.p>
       </div>
     </div>
+    </>
   );
 };
 
