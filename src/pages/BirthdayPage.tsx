@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 // Placeholder photos - replace these with real photos of her!
 const PHOTOS = [
