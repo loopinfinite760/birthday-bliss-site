@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import BackgroundMusic from "@/components/BackgroundMusic";
+
 
 const CANDLE_COLORS = ["#FF6B8A", "#FFB74D", "#FF8A65", "#F06292", "#BA68C8"];
 
@@ -116,7 +116,7 @@ const SurprisePage = () => {
 
   return (
     <div className="min-h-screen bg-background flex flex-col items-center justify-center relative overflow-hidden px-6">
-      <BackgroundMusic src="/birthday-song.mp3" />
+      
       {/* Background sparkles */}
       {[...Array(20)].map((_, i) => (
         <Sparkle key={i} delay={i * 0.3} />
