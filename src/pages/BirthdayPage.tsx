@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import BackgroundMusic from "@/components/BackgroundMusic";
 
 // Placeholder photos - replace these with real photos of her!
 const PHOTOS = [
@@ -77,6 +78,7 @@ const BirthdayPage = () => {
 
   return (
     <div className="h-screen bg-background relative overflow-hidden">
+      <BackgroundMusic src="/birthday-song.mp3" />
       {/* Background: 3 equal rows of scrolling photos */}
       <div className="absolute inset-0 flex flex-col">
         <div className="flex-1 flex items-center overflow-hidden">
