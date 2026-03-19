@@ -110,7 +110,7 @@ const BirthdayPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8 }}
         >
-          I’m so lucky to have you, today and always.
+          Every moment with you is special, and I’m grateful for you every day.
         </motion.p>
         <motion.p
           className="font-display text-2xl md:text-3xl text-accent text-glow-accent mt-6"
@@ -118,7 +118,7 @@ const BirthdayPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8 }}
         >
-          I love you forever 💖
+          You’re my happiness, today and always 💖 I love you forever
         </motion.p>
       </div>
     </div>
