@@ -150,6 +150,7 @@ const BirthdayPage = () => {
         </motion.p>
       </div>
     </div>
+    </>
   );
 };
 
