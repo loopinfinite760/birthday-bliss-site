@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import BackgroundMusic from "@/components/BackgroundMusic";
 
 const CANDLE_COLORS = ["#FF6B8A", "#FFB74D", "#FF8A65", "#F06292", "#BA68C8"];
 
