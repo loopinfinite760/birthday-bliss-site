@@ -16,9 +16,9 @@ const ScrollRow = ({ direction, speed = 30 }: { direction: "left" | "right"; spe
   const photos = [...PHOTOS, ...PHOTOS]; // duplicate for seamless loop
 
   return (
-    <div className="overflow-hidden w-full py-2">
+    <div className="overflow-hidden w-full h-full py-1">
       <motion.div
-        className="flex gap-3"
+        className="flex gap-3 h-full items-center"
         animate={{
           x: direction === "left" ? ["0%", "-50%"] : ["-50%", "0%"],
         }}
@@ -33,7 +33,7 @@ const ScrollRow = ({ direction, speed = 30 }: { direction: "left" | "right"; spe
         {photos.map((src, i) => (
           <div
             key={i}
-            className="flex-shrink-0 w-28 h-28 md:w-36 md:h-36 rounded-xl overflow-hidden border-2 border-primary/20"
+            className="flex-shrink-0 h-[85%] aspect-square rounded-xl overflow-hidden border-2 border-primary/20"
             style={{ boxShadow: "0 4px 20px hsl(340 80% 60% / 0.15)" }}
           >
             <img src={src} alt="" className="w-full h-full object-cover" />
@@ -76,21 +76,28 @@ const BirthdayPage = () => {
   const mainPhoto = "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=400&h=400&fit=crop";
 
   return (
-    <div className="min-h-screen bg-background flex flex-col items-center justify-center relative overflow-hidden">
+    <div className="h-screen bg-background relative overflow-hidden">
+      {/* Background: 3 equal rows of scrolling photos */}
+      <div className="absolute inset-0 flex flex-col">
+        <div className="flex-1 flex items-center overflow-hidden">
+          <ScrollRow direction="right" speed={25} />
+        </div>
+        <div className="flex-1 flex items-center overflow-hidden">
+          <ScrollRow direction="left" speed={35} />
+        </div>
+        <div className="flex-1 flex items-center overflow-hidden">
+          <ScrollRow direction="right" speed={30} />
+        </div>
+      </div>
+
+      {/* Overlay to dim background */}
+      <div className="absolute inset-0 bg-background/40 backdrop-blur-[2px]" />
+
+      {/* Confetti */}
       <Confetti />
 
-      {/* Top scrolling row */}
-      <div className="absolute top-8 left-0 right-0">
-        <ScrollRow direction="left" speed={25} />
-      </div>
-
-      {/* Middle row */}
-      <div className="absolute top-44 md:top-48 left-0 right-0">
-        <ScrollRow direction="right" speed={35} />
-      </div>
-
-      {/* Center content */}
-      <div className="relative z-10 flex flex-col items-center">
+      {/* Center content - upper layer */}
+      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center">
         <motion.h1
           className="font-display text-5xl md:text-8xl text-primary text-glow mb-6"
           initial={{ opacity: 0, scale: 0.5 }}
@@ -118,11 +125,6 @@ const BirthdayPage = () => {
         >
           You're amazing! 💖
         </motion.p>
-      </div>
-
-      {/* Bottom scrolling row */}
-      <div className="absolute bottom-8 left-0 right-0">
-        <ScrollRow direction="left" speed={30} />
       </div>
     </div>
   );
