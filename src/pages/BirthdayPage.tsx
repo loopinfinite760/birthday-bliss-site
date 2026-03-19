@@ -16,9 +16,9 @@ const ScrollRow = ({ direction, speed = 30 }: { direction: "left" | "right"; spe
   const photos = [...PHOTOS, ...PHOTOS]; // duplicate for seamless loop
 
   return (
-    <div className="overflow-hidden w-full py-2">
+    <div className="overflow-hidden w-full h-full py-1">
       <motion.div
-        className="flex gap-3"
+        className="flex gap-3 h-full items-center"
         animate={{
           x: direction === "left" ? ["0%", "-50%"] : ["-50%", "0%"],
         }}
@@ -33,7 +33,7 @@ const ScrollRow = ({ direction, speed = 30 }: { direction: "left" | "right"; spe
         {photos.map((src, i) => (
           <div
             key={i}
-            className="flex-shrink-0 w-28 h-28 md:w-36 md:h-36 rounded-xl overflow-hidden border-2 border-primary/20"
+            className="flex-shrink-0 h-[85%] aspect-square rounded-xl overflow-hidden border-2 border-primary/20"
             style={{ boxShadow: "0 4px 20px hsl(340 80% 60% / 0.15)" }}
           >
             <img src={src} alt="" className="w-full h-full object-cover" />
