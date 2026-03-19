@@ -70,7 +70,7 @@ const BirthdayPage = () => {
       {/* Center content - upper layer */}
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center">
         <motion.h1
-          className="font-display text-5xl md:text-8xl text-primary text-glow mb-6 justify-center"
+          className="font-display text-5xl md:text-8xl text-primary text-glow mb-6"
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, type: "spring" }}
