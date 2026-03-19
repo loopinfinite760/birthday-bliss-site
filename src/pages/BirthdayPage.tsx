@@ -75,7 +75,7 @@ const BirthdayPage = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, type: "spring" }}
         >
-          Happy Birthday!
+          Happy Birthday, Sosamala🌹!
         </motion.h1>
 
         <motion.div
