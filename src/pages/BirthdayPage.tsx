@@ -76,21 +76,28 @@ const BirthdayPage = () => {
   const mainPhoto = "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=400&h=400&fit=crop";
 
   return (
-    <div className="min-h-screen bg-background flex flex-col items-center justify-center relative overflow-hidden">
+    <div className="h-screen bg-background relative overflow-hidden">
+      {/* Background: 3 equal rows of scrolling photos */}
+      <div className="absolute inset-0 flex flex-col">
+        <div className="flex-1 flex items-center overflow-hidden">
+          <ScrollRow direction="right" speed={25} />
+        </div>
+        <div className="flex-1 flex items-center overflow-hidden">
+          <ScrollRow direction="left" speed={35} />
+        </div>
+        <div className="flex-1 flex items-center overflow-hidden">
+          <ScrollRow direction="right" speed={30} />
+        </div>
+      </div>
+
+      {/* Overlay to dim background */}
+      <div className="absolute inset-0 bg-background/40 backdrop-blur-[2px]" />
+
+      {/* Confetti */}
       <Confetti />
 
-      {/* Top scrolling row */}
-      <div className="absolute top-8 left-0 right-0">
-        <ScrollRow direction="left" speed={25} />
-      </div>
-
-      {/* Middle row */}
-      <div className="absolute top-44 md:top-48 left-0 right-0">
-        <ScrollRow direction="right" speed={35} />
-      </div>
-
-      {/* Center content */}
-      <div className="relative z-10 flex flex-col items-center">
+      {/* Center content - upper layer */}
+      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center">
         <motion.h1
           className="font-display text-5xl md:text-8xl text-primary text-glow mb-6"
           initial={{ opacity: 0, scale: 0.5 }}
@@ -118,11 +125,6 @@ const BirthdayPage = () => {
         >
           You're amazing! 💖
         </motion.p>
-      </div>
-
-      {/* Bottom scrolling row */}
-      <div className="absolute bottom-8 left-0 right-0">
-        <ScrollRow direction="left" speed={30} />
       </div>
     </div>
   );
