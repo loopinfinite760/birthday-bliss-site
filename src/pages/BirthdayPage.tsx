@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import BackgroundMusic from "@/components/BackgroundMusic";
 
 // Placeholder photos - replace these with real photos of her!
 const PHOTOS = [
