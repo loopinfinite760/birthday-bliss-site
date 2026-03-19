@@ -77,6 +77,14 @@ const BirthdayPage = () => {
         >
           Happy Birthday!
         </motion.h1>
+        <motion.h2
+          className="font-display text-5xl md:text-8xl text-primary text-glow mb-6"
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, type: "spring" }}
+        >
+          Sosamala
+        </motion.h2>
 
         <motion.div
           className="w-40 h-40 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-primary"
@@ -94,7 +102,23 @@ const BirthdayPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8 }}
         >
-          You're amazing! 💖
+          You make my world brighter just by being in it.
+        </motion.p>
+        <motion.p
+          className="font-display text-2xl md:text-3xl text-accent text-glow-accent mt-6"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8 }}
+        >
+          I’m so lucky to have you, today and always.
+        </motion.p>
+        <motion.p
+          className="font-display text-2xl md:text-3xl text-accent text-glow-accent mt-6"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8 }}
+        >
+          I love you forever 💖
         </motion.p>
       </div>
     </div>
