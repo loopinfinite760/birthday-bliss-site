@@ -1,49 +1,33 @@
 import { motion } from "framer-motion";
-import BackgroundMusic from "@/components/BackgroundMusic";
 
-// Placeholder photos - replace these with real photos of her!
-const PHOTOS = [
-  "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=300&h=300&fit=crop",
-  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=300&fit=crop",
-  "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=300&h=300&fit=crop",
-  "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=300&h=300&fit=crop",
-  "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=300&h=300&fit=crop",
-  "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&h=300&fit=crop",
-  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop",
-  "https://images.unsplash.com/photo-1521146764736-56c929d59c83?w=300&h=300&fit=crop",
-];
-
-const ScrollRow = ({ direction, speed = 30 }: { direction: "left" | "right"; speed?: number }) => {
-  const photos = [...PHOTOS, ...PHOTOS]; // duplicate for seamless loop
-
-  return (
-    <div className="overflow-hidden w-full h-full py-1">
+const FloatingHearts = () => (
+  <>
+    {[...Array(25)].map((_, i) => (
       <motion.div
-        className="flex gap-3 h-full items-center"
+        key={i}
+        className="absolute text-primary/30"
+        style={{
+          left: `${Math.random() * 100}%`,
+          fontSize: `${14 + Math.random() * 24}px`,
+        }}
         animate={{
-          x: direction === "left" ? ["0%", "-50%"] : ["-50%", "0%"],
+          y: [window.innerHeight + 20, -40],
+          x: [0, Math.random() * 80 - 40],
+          rotate: [0, Math.random() * 360],
+          opacity: [0, 0.6, 0.6, 0],
         }}
         transition={{
-          x: {
-            duration: speed,
-            repeat: Infinity,
-            ease: "linear",
-          },
+          duration: 6 + Math.random() * 6,
+          repeat: Infinity,
+          delay: Math.random() * 6,
+          ease: "linear",
         }}
       >
-        {photos.map((src, i) => (
-          <div
-            key={i}
-            className="flex-shrink-0 h-[85%] aspect-square rounded-xl overflow-hidden border-2 border-primary/20"
-            style={{ boxShadow: "0 4px 20px hsl(340 80% 60% / 0.15)" }}
-          >
-            <img src={src} alt="" className="w-full h-full object-cover" />
-          </div>
-        ))}
+        ♥
       </motion.div>
-    </div>
-  );
-};
+    ))}
+  </>
+);
 
 const Confetti = () => (
   <>
@@ -73,27 +57,12 @@ const Confetti = () => (
 );
 
 const BirthdayPage = () => {
-  // Replace this with her actual photo
   const mainPhoto = "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=400&h=400&fit=crop";
 
   return (
     <div className="h-screen bg-background relative overflow-hidden">
-      <BackgroundMusic src="/birthday-song.mp3" />
-      {/* Background: 3 equal rows of scrolling photos */}
-      <div className="absolute inset-0 flex flex-col">
-        <div className="flex-1 flex items-center overflow-hidden">
-          <ScrollRow direction="right" speed={25} />
-        </div>
-        <div className="flex-1 flex items-center overflow-hidden">
-          <ScrollRow direction="left" speed={35} />
-        </div>
-        <div className="flex-1 flex items-center overflow-hidden">
-          <ScrollRow direction="right" speed={30} />
-        </div>
-      </div>
-
-      {/* Overlay to dim background */}
-      <div className="absolute inset-0 bg-background/40 backdrop-blur-[2px]" />
+      {/* Floating hearts background */}
+      <FloatingHearts />
 
       {/* Confetti */}
       <Confetti />

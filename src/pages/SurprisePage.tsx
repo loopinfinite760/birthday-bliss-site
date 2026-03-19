@@ -116,7 +116,7 @@ const SurprisePage = () => {
 
   return (
     <div className="min-h-screen bg-background flex flex-col items-center justify-center relative overflow-hidden px-6">
-      <BackgroundMusic src="/birthday-song.mp3" />
+      
       {/* Background sparkles */}
       {[...Array(20)].map((_, i) => (
         <Sparkle key={i} delay={i * 0.3} />
